@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<hint-collection name="TEXTAREA">
+		<hint name="display-height">105</hint>
+		<hint name="display-width">500</hint>
+	</hint-collection>
+	<model name="petcatalog.model.Item">
+		<field name="itemId" type="long" />
+		<field name="productId" type="String" />
+		<field name="name" type="String" />
+		<field name="description" type="String">
+			<hint-collection name="TEXTAREA" />
+			<hint name="max-length">1200</hint>
+		</field>
+		<field name="imageUrl" type="String" />
+		<field name="imageThumbUrl" type="String" />
+		<field name="price" type="double" />
+	</model>
+</model-hints>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="petcatalog">
+	<namespace>petcatalog</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+	<entity name='Item' table='PETS_ITEM' local-service='true' remote-service='true' >
+		<!-- PK fields -->
+		<column name='itemId' type='long' primary='true'/>
+
+		<column name="productId" type="String" />
+		<column name="name" type="String" />
+		<column name="description" type="String" />
+		<column name="imageUrl" type="String" />
+		<column name="imageThumbUrl" type="String" />
+		<column name="price" type="double" />
+	</entity>
+</service-builder>

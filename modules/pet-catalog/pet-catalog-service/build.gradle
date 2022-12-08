@@ -1,0 +1,21 @@
+dependencies {
+	compile project(":modules:pet-catalog:pet-catalog-api")
+
+	compileOnly group: "com.liferay", name: "com.liferay.petra.io"
+	compileOnly group: "com.liferay", name: "com.liferay.petra.lang"
+	compileOnly group: "com.liferay", name: "com.liferay.petra.string"
+	compileOnly group: "com.liferay", name: "com.liferay.portal.aop.api"
+
+	compile group: "com.liferay", name: "com.liferay.portal.upgrade", version: "2.0.0"
+
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
+	compileOnly group: "org.osgi", name: "org.osgi.annotation.versioning"
+	compileOnly group: "org.osgi", name: "org.osgi.core"
+	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
+}
+
+buildService {
+	apiDir = "../pet-catalog-api/src/main/java"
+}
+
+group = "petcatalog"
