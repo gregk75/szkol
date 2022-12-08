@@ -1,0 +1,1 @@
+create index IX_3EFC0FC9 on PETS_ITEM (name[$COLUMN_LENGTH:75$], description[$COLUMN_LENGTH:1200$]);

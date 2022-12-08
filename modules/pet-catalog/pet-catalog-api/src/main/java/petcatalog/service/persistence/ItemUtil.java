@@ -117,6 +117,349 @@ public class ItemUtil {
 	}
 
 	/**
+	 * Returns all the items where name LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @return the matching items
+	 */
+	public static List<Item> findByName(String name) {
+		return getPersistence().findByName(name);
+	}
+
+	/**
+	 * Returns a range of all the items where name LIKE &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ItemModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param start the lower bound of the range of items
+	 * @param end the upper bound of the range of items (not inclusive)
+	 * @return the range of matching items
+	 */
+	public static List<Item> findByName(String name, int start, int end) {
+		return getPersistence().findByName(name, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the items where name LIKE &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ItemModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param start the lower bound of the range of items
+	 * @param end the upper bound of the range of items (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching items
+	 */
+	public static List<Item> findByName(
+		String name, int start, int end,
+		OrderByComparator<Item> orderByComparator) {
+
+		return getPersistence().findByName(name, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the items where name LIKE &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ItemModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param start the lower bound of the range of items
+	 * @param end the upper bound of the range of items (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching items
+	 */
+	public static List<Item> findByName(
+		String name, int start, int end,
+		OrderByComparator<Item> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByName(
+			name, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first item in the ordered set where name LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching item
+	 * @throws NoSuchItemException if a matching item could not be found
+	 */
+	public static Item findByName_First(
+			String name, OrderByComparator<Item> orderByComparator)
+		throws petcatalog.exception.NoSuchItemException {
+
+		return getPersistence().findByName_First(name, orderByComparator);
+	}
+
+	/**
+	 * Returns the first item in the ordered set where name LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching item, or <code>null</code> if a matching item could not be found
+	 */
+	public static Item fetchByName_First(
+		String name, OrderByComparator<Item> orderByComparator) {
+
+		return getPersistence().fetchByName_First(name, orderByComparator);
+	}
+
+	/**
+	 * Returns the last item in the ordered set where name LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching item
+	 * @throws NoSuchItemException if a matching item could not be found
+	 */
+	public static Item findByName_Last(
+			String name, OrderByComparator<Item> orderByComparator)
+		throws petcatalog.exception.NoSuchItemException {
+
+		return getPersistence().findByName_Last(name, orderByComparator);
+	}
+
+	/**
+	 * Returns the last item in the ordered set where name LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching item, or <code>null</code> if a matching item could not be found
+	 */
+	public static Item fetchByName_Last(
+		String name, OrderByComparator<Item> orderByComparator) {
+
+		return getPersistence().fetchByName_Last(name, orderByComparator);
+	}
+
+	/**
+	 * Returns the items before and after the current item in the ordered set where name LIKE &#63;.
+	 *
+	 * @param itemId the primary key of the current item
+	 * @param name the name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next item
+	 * @throws NoSuchItemException if a item with the primary key could not be found
+	 */
+	public static Item[] findByName_PrevAndNext(
+			long itemId, String name, OrderByComparator<Item> orderByComparator)
+		throws petcatalog.exception.NoSuchItemException {
+
+		return getPersistence().findByName_PrevAndNext(
+			itemId, name, orderByComparator);
+	}
+
+	/**
+	 * Removes all the items where name LIKE &#63; from the database.
+	 *
+	 * @param name the name
+	 */
+	public static void removeByName(String name) {
+		getPersistence().removeByName(name);
+	}
+
+	/**
+	 * Returns the number of items where name LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @return the number of matching items
+	 */
+	public static int countByName(String name) {
+		return getPersistence().countByName(name);
+	}
+
+	/**
+	 * Returns all the items where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @return the matching items
+	 */
+	public static List<Item> findByNameDesc(String name, String description) {
+		return getPersistence().findByNameDesc(name, description);
+	}
+
+	/**
+	 * Returns a range of all the items where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ItemModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @param start the lower bound of the range of items
+	 * @param end the upper bound of the range of items (not inclusive)
+	 * @return the range of matching items
+	 */
+	public static List<Item> findByNameDesc(
+		String name, String description, int start, int end) {
+
+		return getPersistence().findByNameDesc(name, description, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the items where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ItemModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @param start the lower bound of the range of items
+	 * @param end the upper bound of the range of items (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching items
+	 */
+	public static List<Item> findByNameDesc(
+		String name, String description, int start, int end,
+		OrderByComparator<Item> orderByComparator) {
+
+		return getPersistence().findByNameDesc(
+			name, description, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the items where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ItemModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @param start the lower bound of the range of items
+	 * @param end the upper bound of the range of items (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching items
+	 */
+	public static List<Item> findByNameDesc(
+		String name, String description, int start, int end,
+		OrderByComparator<Item> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByNameDesc(
+			name, description, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first item in the ordered set where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching item
+	 * @throws NoSuchItemException if a matching item could not be found
+	 */
+	public static Item findByNameDesc_First(
+			String name, String description,
+			OrderByComparator<Item> orderByComparator)
+		throws petcatalog.exception.NoSuchItemException {
+
+		return getPersistence().findByNameDesc_First(
+			name, description, orderByComparator);
+	}
+
+	/**
+	 * Returns the first item in the ordered set where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching item, or <code>null</code> if a matching item could not be found
+	 */
+	public static Item fetchByNameDesc_First(
+		String name, String description,
+		OrderByComparator<Item> orderByComparator) {
+
+		return getPersistence().fetchByNameDesc_First(
+			name, description, orderByComparator);
+	}
+
+	/**
+	 * Returns the last item in the ordered set where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching item
+	 * @throws NoSuchItemException if a matching item could not be found
+	 */
+	public static Item findByNameDesc_Last(
+			String name, String description,
+			OrderByComparator<Item> orderByComparator)
+		throws petcatalog.exception.NoSuchItemException {
+
+		return getPersistence().findByNameDesc_Last(
+			name, description, orderByComparator);
+	}
+
+	/**
+	 * Returns the last item in the ordered set where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching item, or <code>null</code> if a matching item could not be found
+	 */
+	public static Item fetchByNameDesc_Last(
+		String name, String description,
+		OrderByComparator<Item> orderByComparator) {
+
+		return getPersistence().fetchByNameDesc_Last(
+			name, description, orderByComparator);
+	}
+
+	/**
+	 * Returns the items before and after the current item in the ordered set where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * @param itemId the primary key of the current item
+	 * @param name the name
+	 * @param description the description
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next item
+	 * @throws NoSuchItemException if a item with the primary key could not be found
+	 */
+	public static Item[] findByNameDesc_PrevAndNext(
+			long itemId, String name, String description,
+			OrderByComparator<Item> orderByComparator)
+		throws petcatalog.exception.NoSuchItemException {
+
+		return getPersistence().findByNameDesc_PrevAndNext(
+			itemId, name, description, orderByComparator);
+	}
+
+	/**
+	 * Removes all the items where name LIKE &#63; and description LIKE &#63; from the database.
+	 *
+	 * @param name the name
+	 * @param description the description
+	 */
+	public static void removeByNameDesc(String name, String description) {
+		getPersistence().removeByNameDesc(name, description);
+	}
+
+	/**
+	 * Returns the number of items where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @return the number of matching items
+	 */
+	public static int countByNameDesc(String name, String description) {
+		return getPersistence().countByNameDesc(name, description);
+	}
+
+	/**
 	 * Caches the item in the entity cache if it is enabled.
 	 *
 	 * @param item the item

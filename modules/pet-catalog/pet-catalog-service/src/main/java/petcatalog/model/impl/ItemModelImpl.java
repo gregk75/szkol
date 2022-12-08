@@ -23,6 +23,7 @@ import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringUtil;
 
@@ -102,6 +103,12 @@ public class ItemModelImpl extends BaseModelImpl<Item> implements ItemModel {
 	public static final String SESSION_FACTORY = "liferaySessionFactory";
 
 	public static final String TX_MANAGER = "liferayTransactionManager";
+
+	public static final long DESCRIPTION_COLUMN_BITMASK = 1L;
+
+	public static final long NAME_COLUMN_BITMASK = 2L;
+
+	public static final long ITEMID_COLUMN_BITMASK = 4L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -317,7 +324,17 @@ public class ItemModelImpl extends BaseModelImpl<Item> implements ItemModel {
 
 	@Override
 	public void setName(String name) {
+		_columnBitmask |= NAME_COLUMN_BITMASK;
+
+		if (_originalName == null) {
+			_originalName = _name;
+		}
+
 		_name = name;
+	}
+
+	public String getOriginalName() {
+		return GetterUtil.getString(_originalName);
 	}
 
 	@JSON
@@ -333,7 +350,17 @@ public class ItemModelImpl extends BaseModelImpl<Item> implements ItemModel {
 
 	@Override
 	public void setDescription(String description) {
+		_columnBitmask |= DESCRIPTION_COLUMN_BITMASK;
+
+		if (_originalDescription == null) {
+			_originalDescription = _description;
+		}
+
 		_description = description;
+	}
+
+	public String getOriginalDescription() {
+		return GetterUtil.getString(_originalDescription);
 	}
 
 	@JSON
@@ -377,6 +404,10 @@ public class ItemModelImpl extends BaseModelImpl<Item> implements ItemModel {
 	@Override
 	public void setPrice(double price) {
 		_price = price;
+	}
+
+	public long getColumnBitmask() {
+		return _columnBitmask;
 	}
 
 	@Override
@@ -478,6 +509,11 @@ public class ItemModelImpl extends BaseModelImpl<Item> implements ItemModel {
 
 	@Override
 	public void resetOriginalValues() {
+		_originalName = _name;
+
+		_originalDescription = _description;
+
+		_columnBitmask = 0;
 	}
 
 	@Override
@@ -624,10 +660,13 @@ public class ItemModelImpl extends BaseModelImpl<Item> implements ItemModel {
 	private long _itemId;
 	private String _productId;
 	private String _name;
+	private String _originalName;
 	private String _description;
+	private String _originalDescription;
 	private String _imageUrl;
 	private String _imageThumbUrl;
 	private double _price;
+	private long _columnBitmask;
 	private Item _escapedModel;
 
 }
