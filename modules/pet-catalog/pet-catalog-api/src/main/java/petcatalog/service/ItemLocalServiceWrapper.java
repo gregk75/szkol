@@ -56,6 +56,20 @@ public class ItemLocalServiceWrapper
 	}
 
 	/**
+	 * Returns the number of items where name LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @return the number of matching items
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByName(String name)
+		throws com.liferay.portal.kernel.exception.SystemException {
+
+		return _itemLocalService.countByName(name);
+	}
+
+	/**
 	 * Creates a new item with the primary key. Does not add the item to the database.
 	 *
 	 * @param itemId the primary key for the new item
@@ -202,6 +216,65 @@ public class ItemLocalServiceWrapper
 	@Override
 	public petcatalog.model.Item fetchItem(long itemId) {
 		return _itemLocalService.fetchItem(itemId);
+	}
+
+	/**
+	 * Returns all the items where name LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @return the matching items
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public java.util.List<petcatalog.model.Item> findByName(String name)
+		throws com.liferay.portal.kernel.exception.SystemException {
+
+		return _itemLocalService.findByName(name);
+	}
+
+	/**
+	 * Returns a range of all the items where name LIKE &#63;.
+	 * <p>
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param name  the name
+	 * @param start the lower bound of the range of items
+	 * @param end   the upper bound of the range of items (not inclusive)
+	 * @return the range of matching items
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public java.util.List<petcatalog.model.Item> findByName(
+			String name, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+
+		return _itemLocalService.findByName(name, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the items where name LIKE &#63;.
+	 * <p>
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param name              the name
+	 * @param start             the lower bound of the range of items
+	 * @param end               the upper bound of the range of items (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching items
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public java.util.List<petcatalog.model.Item> findByName(
+			String name, int start, int end,
+			com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+
+		return _itemLocalService.findByName(
+			name, start, end, orderByComparator);
 	}
 
 	@Override
