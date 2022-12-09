@@ -30,7 +30,6 @@
     </div>
 
     <liferay-ui:search-container
-            delta="5"
             curParam="cur2"
             emptyResultsMessage="Nic nie ma"
             total="<%=  ItemLocalServiceUtil.countByName(name) %>"

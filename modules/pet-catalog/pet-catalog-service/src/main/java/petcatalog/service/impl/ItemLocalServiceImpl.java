@@ -162,7 +162,13 @@ public class ItemLocalServiceImpl extends ItemLocalServiceBaseImpl {
 	 * @throws SystemException if a system exception occurred
 	 */
 	public int countByName(String name) throws SystemException {
-		return ItemUtil.countByName(name);
+		if (Validator.isNull(name)) {
+			return getItemsCount();
+		} else {
+			name = addPercent(name);
+
+			return ItemUtil.countByName(name);
+		}
 	}
 
 }
