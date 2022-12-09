@@ -69,7 +69,7 @@
         </portlet:actionURL>
 
         <liferay-ui:icon-delete
-                image="deletes"
+                image="delete"
                 url="<%= deleteURL %>"
         />
     </c:if>

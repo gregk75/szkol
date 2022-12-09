@@ -51,7 +51,7 @@
             <liferay-ui:search-container-column-text name="name" property="name" href="<%= petURL1 %>"/>
             <liferay-ui:search-container-column-jsp name="photo" path="/pet_image.jsp"/>
             <liferay-ui:search-container-column-text name="price" property="price"/>
-            <liferay-ui:search-container-column-jsp path="/pet_actions.jsp" align="right"/>
+            <liferay-ui:search-container-column-jsp path="/pet_actions.jsp" align="right" />
 
         </liferay-ui:search-container-row>
 
