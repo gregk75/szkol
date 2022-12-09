@@ -14,6 +14,11 @@
 
 package petcatalog.service;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+
+import petcatalog.model.Item;
+
 /**
  * Provides the remote service utility for Item. This utility wraps
  * <code>petcatalog.service.impl.ItemServiceImpl</code> and is an
@@ -39,8 +44,17 @@ public class ItemServiceUtil {
 	 *
 	 * @return the OSGi service identifier
 	 */
-	public static java.lang.String getOSGiServiceIdentifier() {
+	public static String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
+	}
+
+	public static Item updateItem(
+			long petId, String name, String description,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException, SystemException {
+
+		return getService().updateItem(
+			petId, name, description, serviceContext);
 	}
 
 	public static ItemService getService() {

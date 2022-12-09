@@ -1,10 +1,11 @@
-<%@page import="com.liferay.portal.kernel.dao.search.ResultRow"%>
-<%@page import="com.liferay.portal.kernel.util.Constants"%>
-<%@page import="com.liferay.portal.kernel.util.WebKeys"%>
-<%@page import="petcatalog.model.Item"%>
+<%@page import="com.liferay.portal.kernel.dao.search.ResultRow" %>
+<%@page import="com.liferay.portal.kernel.util.Constants" %>
+<%@page import="com.liferay.portal.kernel.util.WebKeys" %>
+<%@page import="petcatalog.model.Item" %>
+<%@ page import="com.liferay.portal.kernel.security.permission.ActionKeys" %>
 
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %>
@@ -13,16 +14,16 @@
 <liferay-theme:defineObjects/>
 
 <%
-    ResultRow row = (ResultRow)request.getAttribute(WebKeys.SEARCH_CONTAINER_RESULT_ROW);
-    Item pet = (Item)row.getObject();
+    ResultRow row = (ResultRow) request.getAttribute(WebKeys.SEARCH_CONTAINER_RESULT_ROW);
+    Item pet = (Item) row.getObject();
 %>
 
 <portlet:renderURL var="viewURL">
     <portlet:param name="jspPage" value="/view.jsp"/>
 </portlet:renderURL>
 
-<liferay-ui:icon-menu >
-    <c:if test="<%= true %>">
+<liferay-ui:icon-menu>
+    <c:if test="<%= permissionChecker.hasPermission(themeDisplay.getCompanyId(), Item.class.getName(), pet.getItemId(), ActionKeys.UPDATE) %>">
         <portlet:renderURL var="editURL">
             <portlet:param name="jspPage" value="/edit.jsp"/>
             <portlet:param name="<%= Constants.CMD %>" value="<%= Constants.EDIT %>"/>

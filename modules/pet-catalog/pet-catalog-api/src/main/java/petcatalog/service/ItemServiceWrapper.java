@@ -41,6 +41,17 @@ public class ItemServiceWrapper
 	}
 
 	@Override
+	public petcatalog.model.Item updateItem(
+			long petId, String name, String description,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			   com.liferay.portal.kernel.exception.SystemException {
+
+		return _itemService.updateItem(
+			petId, name, description, serviceContext);
+	}
+
+	@Override
 	public ItemService getWrappedService() {
 		return _itemService;
 	}

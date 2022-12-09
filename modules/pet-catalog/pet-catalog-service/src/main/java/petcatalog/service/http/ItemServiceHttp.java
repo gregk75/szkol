@@ -14,13 +14,22 @@
 
 package petcatalog.service.http;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.security.auth.HttpPrincipal;
+import com.liferay.portal.kernel.service.http.TunnelUtil;
+import com.liferay.portal.kernel.util.MethodHandler;
+import com.liferay.portal.kernel.util.MethodKey;
+
+import petcatalog.service.ItemServiceUtil;
+
 /**
  * Provides the HTTP utility for the
- * <code>petcatalog.service.ItemServiceUtil</code> service
+ * <code>ItemServiceUtil</code> service
  * utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it requires an additional
- * <code>com.liferay.portal.kernel.security.auth.HttpPrincipal</code> parameter.
+ * <code>HttpPrincipal</code> parameter.
  *
  * <p>
  * The benefits of using the HTTP utility is that it is fast and allows for
@@ -42,4 +51,62 @@ package petcatalog.service.http;
  * @generated
  */
 public class ItemServiceHttp {
+
+	public static petcatalog.model.Item updateItem(
+			HttpPrincipal httpPrincipal, long petId, String name,
+			String description,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			   com.liferay.portal.kernel.exception.SystemException {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				ItemServiceUtil.class, "updateItem",
+				_updateItemParameterTypes0);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, petId, name, description, serviceContext);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception exception) {
+				if (exception instanceof
+						com.liferay.portal.kernel.exception.SystemException) {
+
+					throw (com.liferay.portal.kernel.exception.SystemException)
+						exception;
+				}
+
+				if (exception instanceof
+						com.liferay.portal.kernel.exception.PortalException) {
+
+					throw (com.liferay.portal.kernel.exception.PortalException)
+						exception;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					exception);
+			}
+
+			return (petcatalog.model.Item)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException
+					systemException) {
+
+			_log.error(systemException, systemException);
+
+			throw systemException;
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(ItemServiceHttp.class);
+
+	private static final Class<?>[] _updateItemParameterTypes0 = new Class[] {
+		long.class, String.class, String.class,
+		com.liferay.portal.kernel.service.ServiceContext.class
+	};
+
 }

@@ -19,10 +19,13 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
 import com.liferay.portal.kernel.security.access.control.AccessControlled;
 import com.liferay.portal.kernel.service.BaseService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Transactional;
 
 import org.osgi.annotation.versioning.ProviderType;
+
+import petcatalog.model.Item;
 
 /**
  * Provides the remote service interface for Item. Methods of this
@@ -54,5 +57,10 @@ public interface ItemService extends BaseService {
 	 * @return the OSGi service identifier
 	 */
 	public String getOSGiServiceIdentifier();
+
+	public Item updateItem(
+			long petId, String name, String description,
+			ServiceContext serviceContext)
+		throws PortalException, SystemException;
 
 }

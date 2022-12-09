@@ -258,6 +258,70 @@ public class ItemUtil {
 	}
 
 	/**
+	 * Returns all the items that the user has permission to view where name LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @return the matching items that the user has permission to view
+	 */
+	public static List<Item> filterFindByName(String name) {
+		return getPersistence().filterFindByName(name);
+	}
+
+	/**
+	 * Returns a range of all the items that the user has permission to view where name LIKE &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ItemModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param start the lower bound of the range of items
+	 * @param end the upper bound of the range of items (not inclusive)
+	 * @return the range of matching items that the user has permission to view
+	 */
+	public static List<Item> filterFindByName(String name, int start, int end) {
+		return getPersistence().filterFindByName(name, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the items that the user has permissions to view where name LIKE &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ItemModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param start the lower bound of the range of items
+	 * @param end the upper bound of the range of items (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching items that the user has permission to view
+	 */
+	public static List<Item> filterFindByName(
+		String name, int start, int end,
+		OrderByComparator<Item> orderByComparator) {
+
+		return getPersistence().filterFindByName(
+			name, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the items before and after the current item in the ordered set of items that the user has permission to view where name LIKE &#63;.
+	 *
+	 * @param itemId the primary key of the current item
+	 * @param name the name
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next item
+	 * @throws NoSuchItemException if a item with the primary key could not be found
+	 */
+	public static Item[] filterFindByName_PrevAndNext(
+			long itemId, String name, OrderByComparator<Item> orderByComparator)
+		throws petcatalog.exception.NoSuchItemException {
+
+		return getPersistence().filterFindByName_PrevAndNext(
+			itemId, name, orderByComparator);
+	}
+
+	/**
 	 * Removes all the items where name LIKE &#63; from the database.
 	 *
 	 * @param name the name
@@ -274,6 +338,16 @@ public class ItemUtil {
 	 */
 	public static int countByName(String name) {
 		return getPersistence().countByName(name);
+	}
+
+	/**
+	 * Returns the number of items that the user has permission to view where name LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @return the number of matching items that the user has permission to view
+	 */
+	public static int filterCountByName(String name) {
+		return getPersistence().filterCountByName(name);
 	}
 
 	/**
@@ -439,6 +513,80 @@ public class ItemUtil {
 	}
 
 	/**
+	 * Returns all the items that the user has permission to view where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @return the matching items that the user has permission to view
+	 */
+	public static List<Item> filterFindByNameDesc(
+		String name, String description) {
+
+		return getPersistence().filterFindByNameDesc(name, description);
+	}
+
+	/**
+	 * Returns a range of all the items that the user has permission to view where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ItemModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @param start the lower bound of the range of items
+	 * @param end the upper bound of the range of items (not inclusive)
+	 * @return the range of matching items that the user has permission to view
+	 */
+	public static List<Item> filterFindByNameDesc(
+		String name, String description, int start, int end) {
+
+		return getPersistence().filterFindByNameDesc(
+			name, description, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the items that the user has permissions to view where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>ItemModelImpl</code>.
+	 * </p>
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @param start the lower bound of the range of items
+	 * @param end the upper bound of the range of items (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching items that the user has permission to view
+	 */
+	public static List<Item> filterFindByNameDesc(
+		String name, String description, int start, int end,
+		OrderByComparator<Item> orderByComparator) {
+
+		return getPersistence().filterFindByNameDesc(
+			name, description, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the items before and after the current item in the ordered set of items that the user has permission to view where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * @param itemId the primary key of the current item
+	 * @param name the name
+	 * @param description the description
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next item
+	 * @throws NoSuchItemException if a item with the primary key could not be found
+	 */
+	public static Item[] filterFindByNameDesc_PrevAndNext(
+			long itemId, String name, String description,
+			OrderByComparator<Item> orderByComparator)
+		throws petcatalog.exception.NoSuchItemException {
+
+		return getPersistence().filterFindByNameDesc_PrevAndNext(
+			itemId, name, description, orderByComparator);
+	}
+
+	/**
 	 * Removes all the items where name LIKE &#63; and description LIKE &#63; from the database.
 	 *
 	 * @param name the name
@@ -457,6 +605,17 @@ public class ItemUtil {
 	 */
 	public static int countByNameDesc(String name, String description) {
 		return getPersistence().countByNameDesc(name, description);
+	}
+
+	/**
+	 * Returns the number of items that the user has permission to view where name LIKE &#63; and description LIKE &#63;.
+	 *
+	 * @param name the name
+	 * @param description the description
+	 * @return the number of matching items that the user has permission to view
+	 */
+	public static int filterCountByNameDesc(String name, String description) {
+		return getPersistence().filterCountByNameDesc(name, description);
 	}
 
 	/**

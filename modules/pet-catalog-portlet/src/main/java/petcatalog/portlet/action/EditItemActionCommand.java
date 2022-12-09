@@ -16,6 +16,7 @@ import org.osgi.service.component.annotations.Component;
 import petcatalog.constants.PetCatalogPortletKeys;
 import petcatalog.model.Item;
 import petcatalog.service.ItemLocalServiceUtil;
+import petcatalog.service.ItemServiceUtil;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -64,7 +65,7 @@ public class EditItemActionCommand extends BaseMVCActionCommand {
             item = ItemLocalServiceUtil.addItem(name, desc, serviceContext);
         } else {
             long petId = ParamUtil.getLong(actionRequest, "petId");
-            item = ItemLocalServiceUtil.updateItem(petId, name, desc, serviceContext);
+            item = ItemServiceUtil.updateItem(petId, name, desc, serviceContext);
         }
 
     }

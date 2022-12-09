@@ -14,9 +14,16 @@
 
 package petcatalog.service.http;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import java.rmi.RemoteException;
+
+import petcatalog.service.ItemServiceUtil;
+
 /**
  * Provides the SOAP utility for the
- * <code>petcatalog.service.ItemServiceUtil</code> service
+ * <code>ItemServiceUtil</code> service
  * utility. The static methods of this class call the same methods of the
  * service utility. However, the signatures are different because it is
  * difficult for SOAP to support certain types.
@@ -54,4 +61,25 @@ package petcatalog.service.http;
  * @generated
  */
 public class ItemServiceSoap {
+
+	public static petcatalog.model.ItemSoap updateItem(
+			long petId, String name, String description,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws RemoteException {
+
+		try {
+			petcatalog.model.Item returnValue = ItemServiceUtil.updateItem(
+				petId, name, description, serviceContext);
+
+			return petcatalog.model.ItemSoap.toSoapModel(returnValue);
+		}
+		catch (Exception exception) {
+			_log.error(exception, exception);
+
+			throw new RemoteException(exception.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(ItemServiceSoap.class);
+
 }
